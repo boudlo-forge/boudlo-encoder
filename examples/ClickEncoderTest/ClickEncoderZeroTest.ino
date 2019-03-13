@@ -1,7 +1,7 @@
 #define WITH_LCD 1
 
 #include <ClickEncoder.h>
-#include <TimerOne.h>
+#include <ZeroTimer.h>
 
 #ifdef WITH_LCD
 #include <LiquidCrystal.h>
@@ -45,8 +45,7 @@ void setup() {
   displayAccelerationStatus();
 #endif
 
-  Timer1.initialize(1000);
-  Timer1.attachInterrupt(timerIsr); 
+  TCC.startTimer(1000, timerIsr);
   
   last = -1;
 }
