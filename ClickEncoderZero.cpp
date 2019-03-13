@@ -30,12 +30,12 @@
 #if ENC_DECODER != ENC_NORMAL
 #  ifdef ENC_HALFSTEP
      // decoding table for hardware with flaky notch (half resolution)
-     const int8_t ClickEncoder::table[16] __attribute__((__progmem__)) = {
+     const int8_t ClickEncoderZero::table[16] __attribute__((__progmem__)) = {
        0, 0, -1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, -1, 0, 0
      };
 #  else
      // decoding table for normal hardware
-     const int8_t ClickEncoder::table[16] __attribute__((__progmem__)) = {
+     const int8_t ClickEncoderZero::table[16] __attribute__((__progmem__)) = {
        0, 1, -1, 0, -1, 0, 0, 1, 1, 0, 0, -1, 0, -1, 1, 0
      };
 #  endif
@@ -43,7 +43,7 @@
 
 // ----------------------------------------------------------------------------
 
-ClickEncoder::ClickEncoder(uint8_t A, uint8_t B, uint8_t BTN, uint8_t stepsPerNotch, bool active)
+ClickEncoderZero::ClickEncoderZero(uint8_t A, uint8_t B, uint8_t BTN, uint8_t stepsPerNotch, bool active)
   : doubleClickEnabled(true), accelerationEnabled(true),
     delta(0), last(0), acceleration(0),
     button(Open), steps(stepsPerNotch),
@@ -66,7 +66,7 @@ ClickEncoder::ClickEncoder(uint8_t A, uint8_t B, uint8_t BTN, uint8_t stepsPerNo
 // ----------------------------------------------------------------------------
 // call this every 1 millisecond via timer ISR
 //
-void ClickEncoder::service(void)
+void ClickEncoderZero::service(void)
 {
   bool moved = false;
   unsigned long now = millis();
@@ -174,7 +174,7 @@ void ClickEncoder::service(void)
 
 // ----------------------------------------------------------------------------
 
-int16_t ClickEncoder::getValue(void)
+int16_t ClickEncoderZero::getValue(void)
 {
   int16_t val;
 
@@ -206,11 +206,11 @@ int16_t ClickEncoder::getValue(void)
 // ----------------------------------------------------------------------------
 
 #ifndef WITHOUT_BUTTON
-ClickEncoder::Button ClickEncoder::getButton(void)
+ClickEncoderZero::Button ClickEncoderZero::getButton(void)
 {
-  ClickEncoder::Button ret = button;
-  if (button != ClickEncoder::Held) {
-    button = ClickEncoder::Open; // reset
+  ClickEncoderZero::Button ret = button;
+  if (button != ClickEncoderZero::Held) {
+    button = ClickEncoderZero::Open; // reset
   }
   return ret;
 }
