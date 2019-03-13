@@ -1,6 +1,6 @@
 #define WITH_LCD 1
 
-#include <ClickEncoder.h>
+#include <ClickEncoderZero.h>
 #include <ZeroTimer.h>
 
 #ifdef WITH_LCD
