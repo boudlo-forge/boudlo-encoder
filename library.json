@@ -1,12 +1,12 @@
 {
-  "name": "ClickEncoder",
+  "name": "ClickEncoderZero",
   "keywords": "encoder, button, input",
   "description": "Arduino library to handle rotary encoders with buttons as a user input device",
   "repository":
   {
     "type": "git",
-    "url": "https://github.com/0xPIT/encoder.git"
+    "url": "https://github.com/boudlo-forge/encoder-zero.git"
   },
   "frameworks": "arduino",
-  "platforms": "atmelavr"
+  "platforms": "SAMD21"
 }
