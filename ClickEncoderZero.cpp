@@ -9,7 +9,7 @@
 // http://www.mikrocontroller.net/articles/Drehgeber
 // ----------------------------------------------------------------------------
 
-#include "ClickEncoder.h"
+#include "ClickEncoderZero.h"
 
 // ----------------------------------------------------------------------------
 // Button configuration (values for 1ms timer service calls)
