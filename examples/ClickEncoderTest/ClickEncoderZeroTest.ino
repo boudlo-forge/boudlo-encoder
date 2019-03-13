@@ -20,7 +20,7 @@
 LiquidCrystal lcd(LCD_RS, LCD_RW, LCD_EN, LCD_D4, LCD_D5, LCD_D6, LCD_D7);
 #endif
 
-ClickEncoder *encoder;
+ClickEncoderZero *encoder;
 int16_t last, value;
 
 void timerIsr() {
@@ -37,7 +37,7 @@ void displayAccelerationStatus() {
 
 void setup() {
   Serial.begin(9600);
-  encoder = new ClickEncoder(A1, A0, A2);
+  encoder = new ClickEncoderZero(A1, A0, A2);
 
 #ifdef WITH_LCD
   lcd.begin(LCD_CHARS, LCD_LINES);
@@ -65,17 +65,17 @@ void loop() {
 #endif
   }
   
-  ClickEncoder::Button b = encoder->getButton();
-  if (b != ClickEncoder::Open) {
+  ClickEncoderZero::Button b = encoder->getButton();
+  if (b != ClickEncoderZero::Open) {
     Serial.print("Button: ");
     #define VERBOSECASE(label) case label: Serial.println(#label); break;
     switch (b) {
-      VERBOSECASE(ClickEncoder::Pressed);
-      VERBOSECASE(ClickEncoder::Held)
-      VERBOSECASE(ClickEncoder::Released)
-      VERBOSECASE(ClickEncoder::Clicked)
-      case ClickEncoder::DoubleClicked:
-          Serial.println("ClickEncoder::DoubleClicked");
+      VERBOSECASE(ClickEncoderZero::Pressed);
+      VERBOSECASE(ClickEncoderZero::Held)
+      VERBOSECASE(ClickEncoderZero::Released)
+      VERBOSECASE(ClickEncoderZero::Clicked)
+      case ClickEncoderZero::DoubleClicked:
+          Serial.println("ClickEncoderZero::DoubleClicked");
           encoder->setAccelerationEnabled(!encoder->getAccelerationEnabled());
           Serial.print("  Acceleration is ");
           Serial.println((encoder->getAccelerationEnabled()) ? "enabled" : "disabled");
